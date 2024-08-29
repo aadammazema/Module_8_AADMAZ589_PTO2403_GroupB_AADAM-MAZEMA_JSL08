@@ -50,4 +50,9 @@ class BankBranch {
             return bankBranchInstance;
         }
     }
-}
+
+    // Add method to get branch info
+    getBranchInfo() {
+        return this.branchInfo;
+    }
+} 

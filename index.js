@@ -33,26 +33,43 @@
 // - We demonstrate the Singleton pattern by creating two instances (`branchA` and `branchB`) and show that they both point to the same instance,
 //   ensuring that there is only one set of branch information throughout the application.
 
-
 let bankBranchInstance = null;
 
 class BankBranch {
-    constructor(branchInfo) {
-        // Check if 'bankBranchInstance' variable is null
-        if (!bankBranchInstance) {
-            // if 'bankBranchInstance' is null created new instance with provided 'branchInfo'
-            this.branchInfo = branchInfo; 
-            // Assing to 'bankBranchInstance' 
-            bankBranchInstance = this;
-        } else {
-            // If 'bankBranchInstance' exists, do not create new instance
-            // use existing instances 'branchInfo'
-            return bankBranchInstance;
-        }
+  constructor(branchInfo) {
+    // Check if 'bankBranchInstance' variable is null
+    if (!bankBranchInstance) {
+      // if 'bankBranchInstance' is null created new instance with provided 'branchInfo'
+      this.branchInfo = branchInfo;
+      // Assing to 'bankBranchInstance'
+      bankBranchInstance = this;
+    } else {
+      // If 'bankBranchInstance' exists, do not create new instance
+      // use existing instances 'branchInfo'
+      return bankBranchInstance;
     }
+  }
 
-    // Add method to get branch info
-    getBranchInfo() {
-        return this.branchInfo;
-    }
-} 
+  // Add method to get branch info
+  getBranchInfo() {
+    return this.branchInfo;
+  }
+}
+
+// Instances of bankBranch class with different branch information
+const branchA = new BankBranch({
+  name: "Town branch",
+  address: "123 Green street",
+});
+const branchB = new BankBranch({
+  name: "Suburb branch",
+  address: "789 Gold street",
+});
+
+// Retrieve branch info from instances
+console.log(branchA.getBranchInfo());
+
+console.log(branchB.getBranchInfo());
+
+//Hard check that branchA and branchB are the same
+console.log(branchA === branchB);
